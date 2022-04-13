@@ -44,3 +44,8 @@ In normal react app, we fetch data using a hook like *useEffect*, which makes th
 We don't however want to make requests form the browser in a next app, because the components are
 all pre-rendered by the time they reach the browser. So we need to fetch the data before it's rendered.
 => To do this, we can use a special function provided by next: *getStaticProps*.
+
+**Dynamic routes**
+
+-if you have profiles in the file *ninjas/id.js*, next will route to literally
+only *id*. To make a dynamic route, enclose the file name in square brackets: [id].js
