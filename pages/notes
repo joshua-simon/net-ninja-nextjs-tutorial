@@ -1,0 +1,46 @@
+**Routing in Next.js**
+
+-We create page components inside page folder
+-each page in next is driven by a react component. eg, for an about page, we'd have an about component.
+-each page component has it's own file inside the pages folder
+
+-the file name of each component is tied to the *route* for that particular page.
+=> *file name is tied to route name*
+
+-therefore, if you create a file pages/about.js, next will automatically create an /about route
+to serve up the about component
+    -the exception is index.js, for which next will create a '/' route.
+
+-You can create *subfolders* inside the pages folder, that can contain page components.
+    -eg, subfolder = *ninjas*, file inside = *test.js*
+    -route would therefore be /ninjas/test
+    -the route for ninjas/index.js would simply be /ninjas
+
+**Adding other components**
+
+In next, you can have "drop in" components like in regular react, ie, something like a navbar component.
+    -we do not put these drop in components inside the pages folder
+    -create new folder in root of project, place drop in components there
+
+**Linking between pages**
+
+-linking to page components by using link component. adds the ability to do client-side
+navigation in the browser
+    => different pages are loaded via *javascript*, and not new page requests to the server
+
+-code splitting: only javascript for current page is served,
+and only when we navigate to another page will the js for that page be served.
+
+**CSS modules**
+
+These are for page-specific styles. Allow us to write a stylesheet for each page component, 
+can import that stylesheet into whatever component needs it.
+
+Seletors need to be *class* selectors and not element selectors
+
+**fetching data**
+
+In normal react app, we fetch data using a hook like *useEffect*, which makes the request in the browser.
+We don't however want to make requests form the browser in a next app, because the components are
+all pre-rendered by the time they reach the browser. So we need to fetch the data before it's rendered.
+=> To do this, we can use a special function provided by next: *getStaticProps*.
